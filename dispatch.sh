@@ -9,6 +9,6 @@ unzip /tmp/dispatch.zip
 go mod init dispatch
 go get
 go build
-#systemctl daemon-reload
+systemctl daemon-reload
 systemctl enable dispatch
 systemctl restart dispatch
