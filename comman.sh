@@ -160,4 +160,3 @@ schema_setup() {
 
   fi
 }
-
