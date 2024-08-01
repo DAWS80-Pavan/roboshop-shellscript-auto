@@ -5,8 +5,8 @@ rm -f $log_file
 code_dir=$(pwd)
 
 print() {
-  echo
-  echo
+  echo &>>$log_file
+  echo &>>$log_file
   echo "##################################$*#######################" &>>$log_file
   echo $*
 }
