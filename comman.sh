@@ -78,9 +78,9 @@ nodejs() {
   stat $?
 
 
-  print copy mongodb repo file
-  cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
-  stat $?
+#  print copy mongodb repo file
+#  cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
+#  stat $?
 
 #  print Install MongoDB Client
 #  dnf install mongodb-mongosh -y &>>$log_file
@@ -141,10 +141,10 @@ java() {
 }
 
 SCHEMA_SETUP() {
-#  if [ "$schema_setup" == "mongo" ]; then
-#    print COpy MongoDB repo file
-#    cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
-#    stat $?
+  if [ "$schema_setup" == "mongo" ]; then
+    print COpy MongoDB repo file
+    cp $code_dir/mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
+    stat $?
 
     print Install MongoDB Client
     dnf install mongodb-mongosh -y &>>$log_file
@@ -153,7 +153,7 @@ SCHEMA_SETUP() {
     print Load Master Data
     mongosh --host mongo.dev.pdevops.online </app/db/master-data.js &>>$log_file
     stat $?
-#  fi
+  fi
 
   if [ "$schema_setup" == "mysql" ]; then
     print Install MySQL Client
