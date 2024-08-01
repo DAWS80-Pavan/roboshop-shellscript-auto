@@ -108,7 +108,7 @@ nodejs() {
   npm install &>>$log_file
   stat $?
 
-  schema_setup
+  SCHEMA_SETUP
   systemd_setup
 
 
@@ -127,36 +127,37 @@ java() {
   stat $?
 
 
-  schema_setup
+  SCHEMA_SETUP
 
   systemd_setup
 }
 
-schema_setup() {
+SCHEMA_SETUP() {
   if [ "$schema_setup" == "mongo" ]; then
-    print COpy MongoDB repo file
+    PRINT COpy MongoDB repo file
     cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
-    stat $?
+    STAT $?
 
-    print Install MongoDB Client
+    PRINT Install MongoDB Client
     dnf install mongodb-mongosh -y &>>$log_file
-    stat $?
+    STAT $?
 
-    print Load Master Data
+    PRINT Load Master Data
     mongosh --host mongo.dev.rdevopsb80.online </app/db/master-data.js &>>$log_file
-    stat $?
+    STAT $?
   fi
 
   if [ "$schema_setup" == "mysql" ]; then
-    print Install MySQL Client
+    PRINT Install MySQL Client
     dnf install mysql -y &>>$log_file
-    stat $?
+    STAT $?
 
     for file in schema master-data app-user; do
-      print Load file - $file.sql
+      PRINT Load file - $file.sql
       mysql -h mysql.dev.rdevopsb80.online -uroot -pRoboShop@1 < /app/db/$file.sql &>>$log_file
-      stat $?
+      STAT $?
     done
 
   fi
+
 }
