@@ -153,7 +153,7 @@ SCHEMA_SETUP() {
     print Load Master Data
     mongosh --host mongo.dev.rdevopsb80.online </app/db/master-data.js &>>$log_file
     stat $?
-  fi
+#  fi
 
   if [ "$schema_setup" == "mysql" ]; then
     print Install MySQL Client
