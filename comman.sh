@@ -134,28 +134,28 @@ java() {
 
 SCHEMA_SETUP() {
   if [ "$schema_setup" == "mongo" ]; then
-    PRINT COpy MongoDB repo file
+    print COpy MongoDB repo file
     cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
-    STAT $?
+    stat $?
 
-    PRINT Install MongoDB Client
+    print Install MongoDB Client
     dnf install mongodb-mongosh -y &>>$log_file
-    STAT $?
+    stat $?
 
-    PRINT Load Master Data
+    print Load Master Data
     mongosh --host mongo.dev.rdevopsb80.online </app/db/master-data.js &>>$log_file
-    STAT $?
+    stat $?
   fi
 
   if [ "$schema_setup" == "mysql" ]; then
-    PRINT Install MySQL Client
+    print Install MySQL Client
     dnf install mysql -y &>>$log_file
-    STAT $?
+    stat $?
 
     for file in schema master-data app-user; do
-      PRINT Load file - $file.sql
+      print Load file - $file.sql
       mysql -h mysql.dev.rdevopsb80.online -uroot -pRoboShop@1 < /app/db/$file.sql &>>$log_file
-      STAT $?
+      stat $?
     done
 
   fi
