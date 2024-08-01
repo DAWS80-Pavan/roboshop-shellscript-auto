@@ -82,13 +82,13 @@ nodejs() {
   cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
   stat $?
 
-  print Install MongoDB Client
-  dnf install mongodb-mongosh -y &>>$log_file
-  stat $?
+#  print Install MongoDB Client
+#  dnf install mongodb-mongosh -y &>>$log_file
+#  stat $?
 
-  print Load Master Data
-  mongosh --host mongo.dev.rdevopsb80.online </app/db/master-data.js &>>$log_file
-  stat $?
+#  print Load Master Data
+#  mongosh --host mongo.dev.rdevopsb80.online </app/db/master-data.js &>>$log_file
+#  stat $?
 
 
 
@@ -116,7 +116,7 @@ nodejs() {
   npm install &>>$log_file
   stat $?
 
-#  SCHEMA_SETUP
+  SCHEMA_SETUP
   systemd_setup
 
 
@@ -141,10 +141,10 @@ java() {
 }
 
 SCHEMA_SETUP() {
-  if [ "$schema_setup" == "mongo" ]; then
-    print COpy MongoDB repo file
-    cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
-    stat $?
+#  if [ "$schema_setup" == "mongo" ]; then
+#    print COpy MongoDB repo file
+#    cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
+#    stat $?
 
     print Install MongoDB Client
     dnf install mongodb-mongosh -y &>>$log_file
