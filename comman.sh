@@ -162,7 +162,7 @@ SCHEMA_SETUP() {
 
   for file in schema master-data app-user; do
     print Load file - $file.sql
-    mysql -h mysql.dev.rdevopsb80.online -uroot -pRoboShop@1 < /app/db/$file.sql &>>$log_file
+    mysql -h mysql.dev.pdevops.online -uroot -pRoboShop@1 < /app/db/$file.sql &>>$log_file
     stat $?
   done
 
