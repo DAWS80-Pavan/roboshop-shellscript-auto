@@ -151,7 +151,7 @@ SCHEMA_SETUP() {
     stat $?
 
     print Load Master Data
-    mongosh --host mongo.dev.rdevopsb80.online </app/db/master-data.js &>>$log_file
+    mongosh --host mongo.dev.pdevops.online </app/db/master-data.js &>>$log_file
     stat $?
 #  fi
 
