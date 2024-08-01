@@ -7,8 +7,12 @@ code_dir=$(pwd)
 print() {
   echo &>>$log_file
   echo &>>$log_file
+  echo &>>$log_file
+  echo &>>$log_file
   echo "##################################$*#######################" &>>$log_file
   echo $*
+  echo &>>$log_file
+  echo &>>$log_file
 }
 
 stat() {
